@@ -125,7 +125,7 @@
                 ? e.classList.add(t)
                 : (e.className += (e.className ? " " : "") + t);
             },
-            O = function (e, t) {
+            k = function (e, t) {
               n
                 ? e.classList.remove(t)
                 : (e.className = e.className
@@ -136,7 +136,7 @@
             A = function (e) {
               return e.llTempImage;
             },
-            k = function (e, t) {
+            O = function (e, t) {
               if (t) {
                 var i = t._observer;
                 i && i.unobserve(e);
@@ -196,7 +196,7 @@
               P(e, t.class_applied),
                 E(e, v),
                 i &&
-                  (t.unobserve_completed && k(e, t),
+                  (t.unobserve_completed && O(e, t),
                   _(t.callback_applied, e, i));
             },
             U = function (e, t, i) {
@@ -274,8 +274,8 @@
                 (function (e) {
                   e && (e.toLoadCount -= 1);
                 })(i),
-                O(e, t.class_loading),
-                t.unobserve_completed && k(e, i);
+                k(e, t.class_loading),
+                t.unobserve_completed && O(e, i);
             },
             oe = function (e, t, i) {
               var s = A(e) || e;
@@ -404,12 +404,12 @@
                 (function (e, t) {
                   I(e) ||
                     M(e) ||
-                    (O(e, t.class_entered),
-                    O(e, t.class_exited),
-                    O(e, t.class_applied),
-                    O(e, t.class_loading),
-                    O(e, t.class_loaded),
-                    O(e, t.class_error));
+                    (k(e, t.class_entered),
+                    k(e, t.class_exited),
+                    k(e, t.class_applied),
+                    k(e, t.class_loading),
+                    k(e, t.class_loaded),
+                    k(e, t.class_error));
                 })(e, t),
                 C(e),
                 q(e);
@@ -429,9 +429,9 @@
                       })(e);
                       E(e, "entered"),
                         P(e, i.class_entered),
-                        O(e, i.class_exited),
+                        k(e, i.class_exited),
                         (function (e, t, i) {
-                          t.unobserve_entered && k(e, i);
+                          t.unobserve_entered && O(e, i);
                         })(e, i, s),
                         _(i.callback_enter, e, t, s),
                         n || ae(e, i, s);
@@ -453,7 +453,7 @@
                                 le(e);
                             })(e),
                             de(e),
-                            O(e, i.class_loading),
+                            k(e, i.class_loading),
                             z(s, -1),
                             C(e),
                             _(i.callback_cancel, e, t, s));
@@ -503,7 +503,7 @@
                       !(function (e, t) {
                         var i;
                         ((i = fe(e)), me(i).filter(ve)).forEach(function (t) {
-                          O(t, e.class_error), C(t);
+                          k(t, e.class_error), C(t);
                         }),
                           t.update();
                       })(e, i);
@@ -565,7 +565,7 @@
                 var t = this,
                   i = this._settings;
                 ye(e, i).forEach(function (e) {
-                  k(e, t), ae(e, i, t);
+                  O(e, t), ae(e, i, t);
                 });
               },
               restoreAll: function () {
@@ -1182,7 +1182,7 @@
         M
       );
     }
-    function O() {
+    function k() {
       return (
         L ||
           (L = (function () {
@@ -1305,7 +1305,7 @@
         );
       },
     };
-    const k = (e, t) => {
+    const O = (e, t) => {
         if (!e || e.destroyed || !e.params) return;
         const i = t.closest(
           e.isElement ? "swiper-slide" : `.${e.params.slideClass}`,
@@ -2982,7 +2982,7 @@
     }
     function Y(e) {
       const t = this;
-      k(t, e.target),
+      O(t, e.target),
         t.params.cssMode ||
           ("auto" !== t.params.slidesPerView && !t.params.autoHeight) ||
           t.update();
@@ -3371,7 +3371,7 @@
         (o.__swiper__ = !0),
           (o.support = _()),
           (o.device = P({ userAgent: t.userAgent })),
-          (o.browser = O()),
+          (o.browser = k()),
           (o.eventsListeners = {}),
           (o.eventsAnyListeners = []),
           (o.modules = [...o.__modules__]),
@@ -3576,7 +3576,7 @@
         if (
           (i.breakpoints && e.setBreakpoint(),
           [...e.el.querySelectorAll('[loading="lazy"]')].forEach((t) => {
-            t.complete && k(e, t);
+            t.complete && O(e, t);
           }),
           e.updateSize(),
           e.updateSlides(),
@@ -3716,9 +3716,9 @@
             i.push(...t.hostEl.querySelectorAll('[loading="lazy"]')),
           i.forEach((e) => {
             e.complete
-              ? k(t, e)
+              ? O(t, e)
               : e.addEventListener("load", (e) => {
-                  k(t, e.target);
+                  O(t, e.target);
                 });
           }),
           D(t),
@@ -4344,18 +4344,18 @@
               this);
         }),
         (e.prototype.find = function (e) {
-          return Oe(this._getSelector(e, this.selector));
+          return ke(this._getSelector(e, this.selector));
         }),
         (e.prototype.first = function () {
           return this.selector && void 0 !== this.selector.length
-            ? Oe(this.selector[0])
-            : Oe(this.selector);
+            ? ke(this.selector[0])
+            : ke(this.selector);
         }),
         (e.prototype.eq = function (e) {
-          return Oe(this.selector[e]);
+          return ke(this.selector[e]);
         }),
         (e.prototype.parent = function () {
-          return Oe(this.selector.parentElement);
+          return ke(this.selector.parentElement);
         }),
         (e.prototype.get = function () {
           return this._getFirstEl();
@@ -4542,7 +4542,7 @@
         (e.prototype.offset = function () {
           if (!this.firstElement) return { left: 0, top: 0 };
           var e = this.firstElement.getBoundingClientRect(),
-            t = Oe("body").style().marginLeft;
+            t = ke("body").style().marginLeft;
           return {
             left: e.left - parseFloat(t) + this.scrollLeft(),
             top: e.top + this.scrollTop(),
@@ -4574,7 +4574,7 @@
         e
       );
     })();
-    function Oe(e) {
+    function ke(e) {
       return (
         (function () {
           if ("function" == typeof window.CustomEvent) return !1;
@@ -4617,7 +4617,7 @@
       "disqusIdentifier",
       "disqusUrl",
     ];
-    function ke(e) {
+    function Oe(e) {
       return "href" === e
         ? "src"
         : (e = (e =
@@ -4628,7 +4628,7 @@
     }
     var ze = function (e, t, i, s) {
         void 0 === i && (i = 0);
-        var n = Oe(e).attr("data-lg-size") || s;
+        var n = ke(e).attr("data-lg-size") || s;
         if (n) {
           var r = n.split(",");
           if (r[1])
@@ -4653,7 +4653,7 @@
       },
       De = function (e, t, i, s, n) {
         if (n) {
-          var r = Oe(e).find("img").first();
+          var r = ke(e).find("img").first();
           if (r.get()) {
             var o = t.get().getBoundingClientRect(),
               a = o.width,
@@ -4666,14 +4666,14 @@
                 r.offset().left +
                 (parseFloat(u.paddingLeft) || 0) +
                 (parseFloat(u.borderLeft) || 0) +
-                Oe(window).scrollLeft() +
+                ke(window).scrollLeft() +
                 o.left,
               h =
                 (l - c) / 2 -
                 r.offset().top +
                 (parseFloat(u.paddingTop) || 0) +
                 (parseFloat(u.borderTop) || 0) +
-                Oe(window).scrollTop() +
+                ke(window).scrollTop() +
                 i;
             return (
               "translate3d(" +
@@ -4794,12 +4794,12 @@
             for (var t = {}, o = 0; o < e.attributes.length; o++) {
               var a = e.attributes[o];
               if (a.specified) {
-                var l = ke(a.name),
+                var l = Oe(a.name),
                   d = "";
                 r.indexOf(l) > -1 && (d = l), d && (t[d] = a.value);
               }
             }
-            var c = Oe(e),
+            var c = ke(e),
               u = c.find("img").first().attr("alt"),
               p = c.attr("title"),
               h = s ? c.attr(s) : c.find("img").first().attr("src");
@@ -4862,7 +4862,7 @@
             (qe++,
             (this.lgId = qe),
             (this.el = e),
-            (this.LGel = Oe(e)),
+            (this.LGel = ke(e)),
             this.generateSettings(t),
             this.buildModules(),
             this.settings.dynamic &&
@@ -4925,7 +4925,7 @@
               var e = this,
                 t = function (t) {
                   var s = i.items[t],
-                    n = Oe(s),
+                    n = ke(s),
                     r = Pe.generateUUID();
                   n.attr("data-lg-id", r).on(
                     "click.lgcustom-item-" + r,
@@ -4946,7 +4946,7 @@
           (e.prototype.buildModules = function () {
             var e = this;
             this.settings.plugins.forEach(function (t) {
-              e.plugins.push(new t(e, Oe));
+              e.plugins.push(new t(e, ke));
             });
           }),
           (e.prototype.validateLicense = function () {
@@ -4960,7 +4960,7 @@
               : console.error("Please provide a valid license key");
           }),
           (e.prototype.getSlideItem = function (e) {
-            return Oe(this.getSlideItemId(e));
+            return ke(this.getSlideItemId(e));
           }),
           (e.prototype.getSlideItemId = function (e) {
             return "#lg-item-" + this.lgId + "-" + e;
@@ -4969,7 +4969,7 @@
             return e + "-" + this.lgId;
           }),
           (e.prototype.getElementById = function (e) {
-            return Oe("#" + this.getIdName(e));
+            return ke("#" + this.getIdName(e));
           }),
           (e.prototype.manageSingleSlideClassName = function () {
             this.galleryItems.length < 2
@@ -5063,9 +5063,9 @@
                   '" class="lg-components">\n                    ' +
                   (".lg-sub-html" === this.settings.appendSubHtmlTo ? i : "") +
                   "\n                </div>\n            </div>\n        </div>\n        ";
-              Oe(this.settings.container).append(d),
+              ke(this.settings.container).append(d),
                 document.body !== this.settings.container &&
-                  Oe(this.settings.container).css("position", "relative"),
+                  ke(this.settings.container).css("position", "relative"),
                 (this.outer = this.getElementById("lg-outer")),
                 (this.$lgComponents = this.getElementById("lg-components")),
                 (this.$backdrop = this.getElementById("lg-backdrop")),
@@ -5098,7 +5098,7 @@
                       '" download class="lg-download lg-icon"></a>',
                   ),
                 this.counter(),
-                Oe(window).on(
+                ke(window).on(
                   "resize.lg.global" +
                     this.lgId +
                     " orientationchange.lg.global" +
@@ -5173,7 +5173,7 @@
             else if (this.settings.selector)
               if ("string" == typeof this.settings.selector)
                 if (this.settings.selectWithin) {
-                  var e = Oe(this.settings.selectWithin);
+                  var e = ke(this.settings.selectWithin);
                   this.items = e.find(this.settings.selector).get();
                 } else
                   this.items = this.el.querySelectorAll(this.settings.selector);
@@ -5195,24 +5195,24 @@
           (e.prototype.hideScrollbar = function () {
             if (this.shouldHideScrollbar()) {
               this.bodyPaddingRight = parseFloat(
-                Oe("body").style().paddingRight,
+                ke("body").style().paddingRight,
               );
               var e = document.documentElement.getBoundingClientRect(),
                 t = window.innerWidth - e.width;
-              Oe(document.body).css(
+              ke(document.body).css(
                 "padding-right",
                 t + this.bodyPaddingRight + "px",
               ),
-                Oe(document.body).addClass("lg-overlay-open");
+                ke(document.body).addClass("lg-overlay-open");
             }
           }),
           (e.prototype.resetScrollBar = function () {
             this.shouldHideScrollbar() &&
-              (Oe(document.body).css(
+              (ke(document.body).css(
                 "padding-right",
                 this.bodyPaddingRight + "px",
               ),
-              Oe(document.body).removeClass("lg-overlay-open"));
+              ke(document.body).removeClass("lg-overlay-open"));
           }),
           (e.prototype.openGallery = function (e, t) {
             var i = this;
@@ -5259,7 +5259,7 @@
                 this.LGel.trigger(fe),
                 this.getSlideItem(e).addClass("lg-current"),
                 (this.lGalleryOn = !1),
-                (this.prevScrollTop = Oe(window).scrollTop()),
+                (this.prevScrollTop = ke(window).scrollTop()),
                 setTimeout(function () {
                   if (i.zoomFromOrigin && r) {
                     var t = i.getSlideItem(e);
@@ -5294,7 +5294,7 @@
                     i.LGel.trigger(ve);
                 }),
                 document.body === this.settings.container &&
-                  Oe("html").addClass("lg-on");
+                  ke("html").addClass("lg-on");
             }
           }),
           (e.prototype.getMediaContainerPosition = function () {
@@ -5370,15 +5370,15 @@
                   (t =
                     this.settings.subHtmlSelectorRelative &&
                     !this.settings.dynamic
-                      ? Oe(this.items).eq(e).find(t).first().html()
-                      : Oe(t).first().html());
+                      ? ke(this.items).eq(e).find(t).first().html()
+                      : ke(t).first().html());
               } else t = "";
             if (".lg-item" !== this.settings.appendSubHtmlTo)
               i
                 ? this.outer.find(".lg-sub-html").load(i)
                 : this.outer.find(".lg-sub-html").html(t);
             else {
-              var n = Oe(this.getSlideItemId(e));
+              var n = ke(this.getSlideItemId(e));
               i
                 ? n.load(i)
                 : n.append('<div class="lg-sub-html">' + t + "</div>");
@@ -5428,7 +5428,7 @@
           }),
           (e.prototype.getDummyImageContent = function (e, t, i) {
             var s;
-            if ((this.settings.dynamic || (s = Oe(this.items).eq(t)), s)) {
+            if ((this.settings.dynamic || (s = ke(this.items).eq(t)), s)) {
               var n = void 0;
               if (
                 !(n = this.settings.exThumbImage
@@ -5531,7 +5531,7 @@
           (e.prototype.loadContent = function (e, t) {
             var i = this,
               s = this.galleryItems[e],
-              n = Oe(this.getSlideItemId(e)),
+              n = ke(this.getSlideItemId(e)),
               r = s.poster,
               o = s.srcset,
               a = s.sizes,
@@ -5606,7 +5606,7 @@
                   this.addHtml(e);
             }
             var C = 0;
-            v && !Oe(document.body).hasClass("lg-from-hash") && (C = v),
+            v && !ke(document.body).hasClass("lg-from-hash") && (C = v),
               this.isFirstSlideWithZoomAnimation() &&
                 (setTimeout(function () {
                   n.removeClass(
@@ -5731,7 +5731,7 @@
                   i.$inner.append('<div id="' + e + '" class="lg-item"></div>');
               }),
               this.currentItemsInDom.forEach(function (e) {
-                -1 === s.indexOf(e) && Oe("#" + e).remove();
+                -1 === s.indexOf(e) && ke("#" + e).remove();
               }),
               s
             );
@@ -5960,7 +5960,7 @@
                   (n.outer.find(".lg-item").removeAttr("style"),
                   r && Math.abs(e.pageX - t.pageX) < 5)
                 ) {
-                  var a = Oe(i.target);
+                  var a = ke(i.target);
                   n.isPosterElement(a) && n.LGel.trigger(Se);
                 }
                 n.swipeDirection = void 0;
@@ -5981,7 +5981,7 @@
               (this.$inner.on("touchstart.lg", function (i) {
                 e.dragOrSwipeEnabled = !0;
                 var s = e.getSlideItem(e.index);
-                (!Oe(i.target).hasClass("lg-item") &&
+                (!ke(i.target).hasClass("lg-item") &&
                   !s.get().contains(i.target)) ||
                   e.outer.hasClass("lg-zoomed") ||
                   e.lgBusy ||
@@ -6009,7 +6009,7 @@
                 if ("swipe" === e.touchAction) {
                   if (s) (s = !1), e.touchEnd(i, t, r);
                   else if (n) {
-                    var o = Oe(r.target);
+                    var o = ke(r.target);
                     e.isPosterElement(o) && e.LGel.trigger(Se);
                   }
                   (e.touchAction = void 0), (n = !1);
@@ -6026,7 +6026,7 @@
               (this.outer.on("mousedown.lg", function (i) {
                 e.dragOrSwipeEnabled = !0;
                 var n = e.getSlideItem(e.index);
-                (Oe(i.target).hasClass("lg-item") ||
+                (ke(i.target).hasClass("lg-item") ||
                   n.get().contains(i.target)) &&
                   (e.outer.hasClass("lg-zoomed") ||
                     e.lgBusy ||
@@ -6040,7 +6040,7 @@
                       e.outer.removeClass("lg-grab").addClass("lg-grabbing"),
                       e.LGel.trigger(Te))));
               }),
-              Oe(window).on("mousemove.lg.global" + this.lgId, function (r) {
+              ke(window).on("mousemove.lg.global" + this.lgId, function (r) {
                 s &&
                   e.lgOpened &&
                   ((n = !0),
@@ -6048,9 +6048,9 @@
                   e.touchMove(t, i),
                   e.LGel.trigger(xe));
               }),
-              Oe(window).on("mouseup.lg.global" + this.lgId, function (r) {
+              ke(window).on("mouseup.lg.global" + this.lgId, function (r) {
                 if (e.lgOpened) {
-                  var o = Oe(r.target);
+                  var o = ke(r.target);
                   n
                     ? ((n = !1), e.touchEnd(i, t, r), e.LGel.trigger(Ee))
                     : e.isPosterElement(o) && e.LGel.trigger(Se),
@@ -6064,7 +6064,7 @@
             var e = this;
             this.$inner.on("click.lg", function (t) {
               !e.dragOrSwipeEnabled &&
-                e.isPosterElement(Oe(t.target)) &&
+                e.isPosterElement(ke(t.target)) &&
                 e.LGel.trigger(Se);
             });
           }),
@@ -6124,7 +6124,7 @@
           }),
           (e.prototype.keyPress = function () {
             var e = this;
-            Oe(window).on("keydown.lg.global" + this.lgId, function (t) {
+            ke(window).on("keydown.lg.global" + this.lgId, function (t) {
               e.lgOpened &&
                 !0 === e.settings.escKey &&
                 27 === t.keyCode &&
@@ -6217,14 +6217,14 @@
           }),
           (e.prototype.invalidateItems = function () {
             for (var e = 0; e < this.items.length; e++) {
-              var t = Oe(this.items[e]);
+              var t = ke(this.items[e]);
               t.off("click.lgcustom-item-" + t.attr("data-lg-id"));
             }
           }),
           (e.prototype.trapFocus = function () {
             var e = this;
             this.$container.get().focus({ preventScroll: !0 }),
-              Oe(window).on("keydown.lg.global" + this.lgId, function (t) {
+              ke(window).on("keydown.lg.global" + this.lgId, function (t) {
                 if (e.lgOpened && ("Tab" === t.key || 9 === t.keyCode)) {
                   var i = He(e.$container.get()),
                     s = i[0],
@@ -6246,14 +6246,14 @@
               }),
                 this.settings.closeOnTap &&
                   (this.outer.on("mousedown.lg", function (i) {
-                    var s = Oe(i.target);
+                    var s = ke(i.target);
                     t = !!e.isSlideElement(s);
                   }),
                   this.outer.on("mousemove.lg", function () {
                     t = !1;
                   }),
                   this.outer.on("mouseup.lg", function (i) {
-                    var s = Oe(i.target);
+                    var s = ke(i.target);
                     e.isSlideElement(s) &&
                       t &&
                       (e.outer.hasClass("lg-dragging") || e.closeGallery());
@@ -6266,7 +6266,7 @@
             this.LGel.trigger(Me),
               this.settings.resetScrollPosition &&
                 !this.settings.hideScrollbar &&
-                Oe(window).scrollTop(this.prevScrollTop);
+                ke(window).scrollTop(this.prevScrollTop);
             var i,
               s = this.items[this.index];
             if (this.zoomFromOrigin && s) {
@@ -6301,7 +6301,7 @@
               (this.zoomFromOrigin = this.settings.zoomFromOrigin),
               clearTimeout(this.hideBarTimeout),
               (this.hideBarTimeout = !1),
-              Oe("html").removeClass("lg-on"),
+              ke("html").removeClass("lg-on"),
               this.outer.removeClass("lg-visible lg-components-open"),
               this.$backdrop.removeClass("in").css("opacity", 0);
             var u =
@@ -6372,7 +6372,7 @@
           (e.prototype.destroyGallery = function () {
             this.destroyModules(!0),
               this.settings.dynamic || this.invalidateItems(),
-              Oe(window).off(".lg.global" + this.lgId),
+              ke(window).off(".lg.global" + this.lgId),
               this.LGel.off(".lg"),
               this.$container.remove();
           }),
@@ -6502,6 +6502,34 @@
             l.formClean(e),
             r(`[Формы]: ${"Форма отправлена!"}`);
         }
-      })(!0);
+      })(!0),
+      (function () {
+        function e(e) {
+          if ("click" === e.type) {
+            const t = e.target;
+            if (t.closest("[data-goto]")) {
+              const i = t.closest("[data-goto]"),
+                s = i.dataset.goto ? i.dataset.goto : "",
+                n = !!i.hasAttribute("data-goto-header"),
+                r = i.dataset.gotoSpeed ? i.dataset.gotoSpeed : "500";
+              o(s, n, r), e.preventDefault();
+            }
+          } else if ("watcherCallback" === e.type && e.detail) {
+            const t = e.detail.entry,
+              i = t.target;
+            if ("navigator" === i.dataset.watch) {
+              const e = i.id,
+                s =
+                  (document.querySelector("[data-goto]._navigator-active"),
+                  document.querySelector(`[data-goto="#${e}"]`));
+              t.isIntersecting
+                ? s && s.classList.add("_navigator-active")
+                : s && s.classList.remove("_navigator-active");
+            }
+          }
+        }
+        document.addEventListener("click", e),
+          document.addEventListener("watcherCallback", e);
+      })();
   })();
 })();
